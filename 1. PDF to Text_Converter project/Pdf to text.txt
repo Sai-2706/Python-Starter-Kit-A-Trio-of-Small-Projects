@@ -1,0 +1,87 @@
+ PDF to Text Converter project in terminal:
+
+1. Set up the environment
+Step 1: Open your terminal
+You can use the terminal in VS Code, Command Prompt, or your system's terminal.
+
+Step 2: Create a new project folder
+Run the following commands:
+
+bash
+Copy code
+mkdir pdf_to_text_project
+cd pdf_to_text_project
+2. Set up a virtual environment
+A virtual environment ensures project dependencies are isolated.
+
+Step 1: Create a virtual environment
+Run:
+
+bash
+Copy code
+python -m venv venv
+Step 2: Activate the virtual environment
+For Windows:
+bash
+Copy code
+venv\Scripts\activate
+For Linux/Mac:
+bash
+Copy code
+source venv/bin/activate
+You should see (venv) appear at the beginning of the terminal, meaning the virtual environment is active.
+
+3. Install the required library
+Run the following to install PyPDF2:
+
+bash
+Copy code
+pip install PyPDF2
+4. Create the Python script
+Create a new Python file called pdf_to_text.py:
+bash
+Copy code
+touch pdf_to_text.py
+Open the file using your editor:
+bash
+Copy code
+code pdf_to_text.py
+Or open it with Notepad or any editor you prefer.
+5. Add the code
+Paste the following code into pdf_to_text.py:
+
+python
+Copy code
+import PyPDF2
+
+# Input and output file paths
+input_pdf = "sample.pdf"  # Replace with your PDF file name
+output_txt = "output_text.txt"
+
+# Open the PDF file
+with open(input_pdf, "rb") as file:
+    reader = PyPDF2.PdfReader(file)
+    text = ""
+    for page in reader.pages:
+        text += page.extract_text()
+
+# Write the extracted text to a file
+with open(output_txt, "w", encoding="utf-8") as output_file:
+    output_file.write(text)
+
+print(f"Text extracted and saved to {output_txt}")
+6. Add a PDF file
+Place your PDF file (e.g., sample.pdf) inside the project folder.
+
+7. Run the script
+Run the Python script in the terminal:
+
+bash
+Copy code
+python pdf_to_text.py
+If the script runs successfully:
+
+The extracted text will be saved in a file called output_text.txt in your project folder.
+You’ll see a confirmation message in the terminal.
+8. Check the output
+Open the output_text.txt file to see the extracted text.
